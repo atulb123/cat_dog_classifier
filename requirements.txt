@@ -32,4 +32,4 @@ xgboost==0.90
 zipp==2.0.1
 imbalanced-learn==0.8.1
 tensorflow==2.7.0
-pillow
+pillow==9.0.0
