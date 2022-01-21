@@ -6,6 +6,7 @@ import os
 import numpy as np
 from flask_cors import CORS, cross_origin
 from werkzeug.utils import secure_filename
+from wsgiref import simple_server
 
 app = Flask(__name__)
 
@@ -35,4 +36,7 @@ def classify_image(image_path):
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8000, debug=True)
+    port = int(os.getenv("PORT", 5000))
+    host = '0.0.0.0'
+    httpd = simple_server.make_server(host=host, port=port, app=app)
+    httpd.serve_forever()
